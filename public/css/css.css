@@ -1,0 +1,85 @@
+@charset "utf-8";
+/*all*/
+body{font-size:16px;
+	font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+	color:#000000;
+	background: #AAAAAA;}
+h1,h2,h3{margin:0px;}
+img{display:block;
+	max-width:100%;}
+a{text-decoration:none;
+color:#000000;}
+ul{padding:0;
+list-style:none;}
+.clearflx:after{content:"";
+				display:table;
+				clear:both;}
+
+/* head*/
+.head{margin:2%;}
+.head li{float:left;}
+.head li:last-child{float:right;}
+.head span{border:#000000 solid 4px;
+			height:90px;
+			width:90px;
+			margin:2px;
+			display:inline-block;
+			}
+/*main*/
+.menu_main{margin:2%;}
+.menu{font-size:50px;
+	 	text-align:center;
+		width:173px;}
+.menu li{display:block;
+		height:60px;
+		width:173px;
+		padding:10px;
+		margin:40px 0;
+		border:#000000 solid 4px;}
+.menu a:hover{color:#FFFFFF;}
+/*content*/
+.content{display:flex;}
+.content nav{display:none;}
+.content nav.main_forum{border:#000000 solid 4px;
+			height:650px;
+			width:65%;
+			position:absolute;
+			top:190px;
+			left:250px;
+			order:0;
+			display:block;
+			}
+.chartroom{border:#000000 solid 4px;
+			height:650px;
+			width:65%;
+			position:absolute;
+			top:190px;
+			left:250px;
+			order:2;}
+.wu{border:#000000 solid 4px;
+			height:650px;
+			width:65%;
+			position:absolute;
+			top:190px;
+			left:250px;
+			order:3;}
+/*tool*/
+.tool{margin:2%;}
+.tool li{border:#000000 solid 4px;
+		height:80px;
+		width:80px;
+		padding:5px;
+		}
+.tool_left{float:left;
+			margin-right:2px;}
+.tool_right{float:left;
+			margin-left:2px;}
+.tieba{margin-top:4px;}
+.link{margin-top:4px;}
+/*chart*/
+.chart{	position:absolute;
+		height:650px;
+		width:290px;
+		border:#000000 solid 4px;
+		right:2%;
+		top:20%;}

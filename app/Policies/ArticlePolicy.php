@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\User;
+use App\Models\Article;
+
+class ArticlePolicy extends Policy
+{
+    public function destroy(User $user, Article $article)
+    {
+        return $user->isAuthorOf($article)
+                || $user->isAdmin();
+    }
+}
