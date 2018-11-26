@@ -27,10 +27,12 @@ Route::resource('articles', 'ArticlesController', ['only' => [
 Route::resource('articles.replies', 'RepliesController', ['only' => ['create', 'store', 'show', 'destroy']]);
 
 Route::get('chatroom/lounge', 'RoomsController@index')->name('rooms.index');
+Route::get('chatroom/room/create', 'RoomsController@create')->name('rooms.create');
+Route::post('chatroom/room/create', 'RoomsController@store')->name('rooms.store');
 Route::get('chatroom/room/{room}', 'RoomsController@show')->name('rooms.show');
 Route::post('chatroom/join/{room}', 'RoomsController@join')->name('rooms.join');
 Route::post('chatroom/leave/{room}', 'RoomsController@leave')->name('rooms.leave');
-Route::post('chatroom/chat/create', 'ChatsController@store')->name('chats.store');
+Route::post('chatroom/{room}/chat/create', 'ChatsController@store')->name('chats.store');
 
 Route::get('invite', 'InviteController@show')->name('invite.show');
 Route::redirect('invite.html', 'invite', 301)->name('invite.alias');

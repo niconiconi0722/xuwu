@@ -2,8 +2,8 @@
 
 @section('content')
     <div id="chatroom">
-        <chat-form submit-route="{{ route('chats.store') }}"></chat-form>
-        <chat-list :initial-chats="{{ json_encode($chats) }}" :room-id="1"></chat-list>
+        <chat-form submit-route="{{ route('chats.store', $room->id) }}"></chat-form>
+        <chat-list :initial-chats="{{ json_encode($chats) }}" :room-id="{{ $room->id }}"></chat-list>
     </div>
 @endsection
 

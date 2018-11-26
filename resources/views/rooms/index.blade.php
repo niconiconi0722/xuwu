@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>所有房间</h2>
+    <ul>
+        @each('rooms._room_list', $rooms, 'room')
+    </ul>
+    <a href="{{ route('rooms.create') }}">新建房间</a>
 @endsection

@@ -10,35 +10,37 @@ use Auth;
 
 class ChatroomsRepository
 {
+    public function index()
+    {
+        $rooms = Room::orderBy('is_fixed', 'desc')->orderBy('created_at', 'desc')->paginate(22);
+
+        return $rooms;
+    }
+
     public function isInRoom($user, $room)
     {
         return $room->users->contains($user);
     }
 
-    public function sendJoinMessage($user, $room)
+    public function newRoom($request)
     {
-        $this->sendSystemMessage($user->ni_cheng . '进入了房间');
+        $room = new Room();
+
+        $room->name = $request->name;
+        $room->description = $request->description;
+        $room->save();
+
+        return $room;
     }
 
-    public function sendLeaveMessage($user, $room)
-    {
-        $this->sendSystemMessage($user->ni_cheng . '离开了房间');
-    }
-
-    protected function sendSystemMessage($content)
-    {
-        $request = (object) ['content' => $content];
-        $chat = $this->newChat($request, true);
-    }
-
-    public function newChat($request, bool $isSystemMessage = false)
+    public function newChat($request, $room, bool $isSystemMessage = false)
     {
         $chat = new Chat();
 
         if (! $isSystemMessage) {
             $chat->user_id = Auth::id();
         }
-        $chat->room_id = 1;
+        $chat->room_id = $room->id;
         $chat->content = $request->content;
         $chat->save();
 
@@ -47,13 +49,31 @@ class ChatroomsRepository
         return $chat;
     }
 
+    public function sendJoinMessage($user, $room)
+    {
+        $this->sendSystemMessage($room, $user->ni_cheng . '进入了房间');
+    }
+
+    public function sendLeaveMessage($user, $room)
+    {
+        $this->sendSystemMessage($room, $user->ni_cheng . '离开了房间');
+    }
+
+    protected function sendSystemMessage($room, $content)
+    {
+        $request = (object) ['content' => $content];
+        $chat = $this->newChat($request, $room, true);
+    }
+
     public function attachUserToRoom($user, $room)
     {
         $room->users()->attach($user->id);
+        $room->increment('user_count');
     }
 
     public function detachUserFromRoom($user, $room)
     {
         $room->users()->detach($user->id);
+        $room->decrement('user_count');
     }
 }

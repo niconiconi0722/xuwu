@@ -54108,7 +54108,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         leave: function leave() {
             axios.post('/chatroom/leave/' + this.roomId);
-            // window.location.
+            window.location.href = "/chatroom/lounge";
         },
         removeUser: function removeUser(shouldRemoveUser) {
             for (var i in this.users) {

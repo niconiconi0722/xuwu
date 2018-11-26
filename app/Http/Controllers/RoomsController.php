@@ -16,20 +16,35 @@ class RoomsController extends Controller
 
     public function __construct(ChatroomsRepository $repository)
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'index']);
 
         $this->repository = $repository;
     }
 
     public function index()
     {
-        return view('rooms.index');
+        $rooms = $this->repository->index();
+
+        return view('rooms.index', compact('rooms'));
+    }
+
+    public function create()
+    {
+        return view('rooms.create');
+    }
+
+    public function store(Request $request)
+    {
+        $room = $this->repository->newRoom($request);
+
+        return redirect()->route('rooms.show', $room->id);
     }
 
     public function show(Room $room)
     {
-        $chats = Chat::orderBy('created_at', 'desc')->get();
-        return view('rooms.show', compact('chats'));
+        $chats = $room->chats()->orderBy('created_at', 'desc')->get();
+
+        return view('rooms.show', compact('room', 'chats'));
     }
 
     public function join(Room $room)
