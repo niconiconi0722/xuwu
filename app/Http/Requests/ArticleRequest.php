@@ -8,7 +8,7 @@ class ArticleRequest extends Request
 {
     public function rules()
     {
-        switch ($this->method) {
+        switch ($this->method()) {
             case 'POST':
                 return [
                     'title' => 'required|string|max:60',

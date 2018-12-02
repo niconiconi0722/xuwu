@@ -30,8 +30,13 @@ Route::get('chatroom/lounge', 'RoomsController@index')->name('rooms.index');
 Route::get('chatroom/room/create', 'RoomsController@create')->name('rooms.create');
 Route::post('chatroom/room/create', 'RoomsController@store')->name('rooms.store');
 Route::get('chatroom/room/{room}', 'RoomsController@show')->name('rooms.show');
-Route::post('chatroom/join/{room}', 'RoomsController@join')->name('rooms.join');
-Route::post('chatroom/leave/{room}', 'RoomsController@leave')->name('rooms.leave');
+Route::post('chatroom/{room}/join', 'RoomsController@join')->name('rooms.join');
+Route::post('chatroom/{room}/syncuser', 'RoomsController@syncUser')->name('rooms.syncuser');
+Route::post('chatroom/{room}/leave', 'RoomsController@leave')->name('rooms.leave');
+Route::post('chatroom/{room}/knock', 'RoomsController@knock')->name('rooms.knock');
+Route::delete('chatroom/{room}/kick/{user}', 'RoomsController@kick')->name('rooms.kick');
+Route::patch('chatroom/{room}/edit', 'RoomsController@update')->name('rooms.update');
+Route::delete('chatroom/{room}', 'RoomsController@destroy')->name('rooms.destroy');
 Route::post('chatroom/{room}/chat/create', 'ChatsController@store')->name('chats.store');
 
 Route::get('invite', 'InviteController@show')->name('invite.show');

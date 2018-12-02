@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddActivedAtColumnToRoomUserTable extends Migration
+class AddMaxUsersColomnToRoomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddActivedAtColumnToRoomUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('room_user', function (Blueprint $table) {
-            $table->timestamp('actived_at')->useCurrent();
+        Schema::table('rooms', function (Blueprint $table) {
+            $table->integer('max_users')->unsigned()->default(20);
         });
     }
 
@@ -25,8 +25,8 @@ class AddActivedAtColumnToRoomUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('room_user', function (Blueprint $table) {
-            $table->dropColumn('actived_at');
+        Schema::table('rooms', function (Blueprint $table) {
+            $table->dropColumn('max_users');
         });
     }
 }

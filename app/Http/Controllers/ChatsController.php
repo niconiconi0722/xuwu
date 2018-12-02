@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ChatRequest;
 use App\Repositories\ChatroomsRepository;
 use App\Models\Room;
 use App\Models\Chat;
@@ -18,7 +19,7 @@ class ChatsController extends Controller
         $this->repository = $repository;
     }
 
-    public function store(Request $request, Room $room)
+    public function store(ChatRequest $request, Room $room)
     {
         $chat = $this->repository->newChat($request, $room);
 

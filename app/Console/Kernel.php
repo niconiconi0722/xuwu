@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,6 +27,13 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->call(function () {
+            \DB::table('rooms')
+                ->where('is_fixed', 0)
+                ->where('updated_at', '<', Carbon::now()->subHour())
+                ->delete();
+        })->hourlyAt(00);
     }
 
     /**

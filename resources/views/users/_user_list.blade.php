@@ -11,7 +11,7 @@
     <form action="{{ route('users.authority', $user->id) }}" method="POST">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
-        @if($user->authority == 0)
+        @if ($user->authority == 0)
             <input type="hidden" value="1" name="authority_edit">
             <button type="submit">设为管理员</button>
         @else

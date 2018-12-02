@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RoomRequest;
 use App\Repositories\ChatroomsRepository;
 use App\Models\Room;
 use App\Models\Chat;
@@ -33,33 +34,96 @@ class RoomsController extends Controller
         return view('rooms.create');
     }
 
-    public function store(Request $request)
+    public function store(RoomRequest $request)
     {
         $room = $this->repository->newRoom($request);
+        $this->repository->joinRoom(Auth::user(), $room);
+        $room->changeHost(Auth::user());
 
         return redirect()->route('rooms.show', $room->id);
     }
 
     public function show(Room $room)
     {
-        $chats = $room->chats()->orderBy('created_at', 'desc')->get();
+        $chats = $this->repository->getChatsInRoom($room);
 
         return view('rooms.show', compact('room', 'chats'));
     }
 
+    public function update(Room $room, RoomRequest $request)
+    {
+        $this->authorize($room, 'update');
+        $room = $this->repository->updateRoom($room, $request);
+
+        return response()->json([
+            'success' => true,
+            'room' => $room,
+        ]);
+    }
+
+    public function destroy(Room $room)
+    {
+        $this->authorize('destroy', $room);
+        $this->repository->destroyRoom($room);
+
+        return response()->json([
+            'success' => true,
+        ]);
+    }
+
+    public function syncUser(Room $room, Request $users)
+    {
+        $this->repository->roomShouldHasUsers($users, $room);
+    }
+
     public function join(Room $room)
     {
-        if (! $this->repository->isInRoom(Auth::user(), $room)) {
-            $user = Auth::user();
-            $this->repository->attachUserToRoom($user, $room);
-            $this->repository->sendJoinMessage($user, $room);
+        $user = Auth::user();
+
+        if ($room->hasUser($user)) {
+            return response()->json([
+                'success' => true,
+                'message' => '用户已在此房间',
+                'link' => route('rooms.show', $room->id),
+            ]);
         }
+
+        if ($room->isFull()) {
+            return response()->json([
+                'success' => false,
+                'message' => '房间已满',
+            ]);
+        }
+
+        $this->repository->joinRoom($user, $room);
+
+        return response()->json([
+            'success' => true,
+            'message' => '用户进入了房间',
+            'link' => route('rooms.show', $room->id),
+        ]);
     }
 
     public function leave(Room $room)
     {
         $user = Auth::user();
-        $this->repository->detachUserFromRoom($user, $room);
-        $this->repository->sendLeaveMessage($user, $room);
+        $this->repository->leaveRoom($user, $room);
+    }
+
+    public function knock(Room $room)
+    {
+        $user = Auth::user();
+        $this->repository->sendknockMessage($user, $room);
+
+        return response()->json([
+            'success' => false,
+            'message' => '已发出增加人数的请求，请稍后刷新查看是否能进入房间',
+        ]);
+    }
+
+    public function kick(Room $room, User $user)
+    {
+        $this->authorize('kick', [$room, $user]);
+        $this->repository->kick($user, $room);
     }
 }

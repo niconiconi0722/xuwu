@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Room;
+
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -11,6 +13,8 @@
 |
 */
 
-Broadcast::channel('chatroom.{room}.channel', function ($user, $roomId) {
-    return $user->toArray();
+Broadcast::channel('chatroom.{room}.channel', function ($user, Room $room) {
+    if ($room->hasUser($user)) {
+        return $user->toArray();
+    }
 });

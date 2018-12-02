@@ -5,6 +5,7 @@ namespace App\Models;
 class chat extends Model
 {
     protected $fillable = ['content'];
+    protected $touches = ['room'];
 
     public function room()
     {
