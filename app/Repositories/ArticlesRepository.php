@@ -26,6 +26,8 @@ class ArticlesRepository
     {
         //XSS过滤
         $article->content = clean($request->content, 'user_article_content');
+		$article->content = str_replace("\n","<br>",$article->content);
+		$article->content = str_replace(" ","&nbsp;",$article->content);
         if (empty($article->content)) {
             return redirect()->back()->withInput()->with('danger', '含有非法内容');
         }

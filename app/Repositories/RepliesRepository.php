@@ -14,7 +14,9 @@ class RepliesRepository
     {
         $reply->user_id = Auth::id();
         $reply->article_id = $article->id;
-        $reply->content = $request->content;
+		$reply->content = $request->content;
+		$reply->content = str_replace("\n","<br>",$reply->content);
+		$reply->content = str_replace(" ","&nbsp;",$reply->content);
         $reply->floor = $article->reply_count + 1;
         $reply->save();
 

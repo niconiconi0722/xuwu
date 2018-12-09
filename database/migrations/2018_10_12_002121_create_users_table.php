@@ -26,9 +26,6 @@ class CreateUsersTable extends Migration
             $table->integer('authority')->default(0);
             $table->timestamps();
 
-            $table->index('ni_cheng');
-            $table->index('email');
-            $table->index('authority');
         });
     }
 
