@@ -11,7 +11,7 @@
                     <form action="{{ route('logout') }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button type="submit" name="button"><img src="/img/log_out.png"></button>
+                        <button type="submit" name="button" class="btn-image"><img src="/img/log_out.png"></button>
                     </form>
                 </span></li>
                 <li class="search"><span>

@@ -1,14 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>虚无</title>
-    <script src="/js/app.js"></script>
-</head>
-<body>
-    <h1>symbol</h1>
-    <form action="{{ route('index.auth') }}" method="POST">
-        {{ csrf_field() }}
-        <input type="password" name="password">
-    </form>
-</body>
-</html>
+@extends('layouts.common')
+
+
+@section('title')
+	虚无
+@stop
+
+@section('content')
+	<div class="center-vertical">
+		
+		<form action="{{ route('index.auth') }}" method="POST" class="form-horizontal center-vertical">
+			<div class="m-auto center-logo">
+				<h1>symbol</h1>
+			</div>
+			
+			{{ csrf_field() }}
+			<input class="form-control short-width" type="password" name="password">
+		</form>
+	</div>
+	
+@stop
+
+@section('script')
+	
+@stop
+
+
+
+

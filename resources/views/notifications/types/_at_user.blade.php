@@ -1,4 +1,4 @@
-<div>
+<td>
     <a href="{{ route('notifications.show', $notification->id) }}">
         <div>
             <span>
@@ -7,4 +7,4 @@
             <p> @了你 </p>
         </div>
     </a>
-</div>
+</td>
