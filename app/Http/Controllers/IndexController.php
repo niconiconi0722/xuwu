@@ -27,7 +27,7 @@ class IndexController extends Controller
         if ($request->password === config('app.password')) {
             $this->repository->enter();
 
-            return redirect()->route('articles.index');
+            return redirect()->route('announcements.index');
         } else {
             return redirect()->back();
         }

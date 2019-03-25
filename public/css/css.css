@@ -6,7 +6,7 @@ body{
 	color:#000000;
 	background: #AAAAAA;
 }
-	
+
 h1,h2,h3{margin:0px;}
 
 
@@ -20,11 +20,13 @@ a{
 ul{
 	padding:0;
 	list-style:none;}
+
 .clearflx:after{
 	content:"";
 	display:table;
 	clear:both;}
-				
+
+.transparent-text{color:transparent;}
 
 /* head*/
 .head{margin:1%;}
@@ -37,11 +39,7 @@ ul{
 	margin:2px;
 	display:inline-block;
 }
-			
-/*main*/
-.main{
-	
-}
+
 .center-vertical{
 	position: relative;
 	top: 10;
@@ -49,22 +47,22 @@ ul{
 	margin-left:auto;
 	margin-right:auto;
 	float:none;
-	text-align:center; 
+	text-align:center;
     vertical-align: middle;
-} 
+}
 .center-logo{
 	margin-left:auto;
 	margin-right:auto;
 	float:none;
 	height:150px;
 	width:150px;
-	text-align:center; 
-} 
+	text-align:center;
+}
 
 .center-btn{
 	margin: 0px auto;
 	display: table;
-	text-align:center; 
+	text-align:center;
 	min-width:120px;
 }
 
@@ -73,9 +71,9 @@ ul{
 	margin-left:auto;
 	margin-right:auto;
 	float:none;
-	text-align:center; 
+	text-align:center;
 }
-	
+
 .menu_main{
 	margin:1%;
 }
@@ -93,7 +91,7 @@ ul{
 	margin:40px 0;
 	border:#000000 solid 4px;
 }
-	
+
 .menu a{
 	background-color:transparent;
 	display:block;
@@ -113,7 +111,7 @@ ul{
 .content nav{display:none;}
 .content nav.main_forum{
 	border:#000000 solid 4px;
-	
+
 	width:100%;
 	min-height:650px;
 	/*height:650px;
@@ -123,7 +121,9 @@ ul{
 	order:0;
 	display:block;
 }
-			
+
+.content-scroll{max-height:500px;overflow:auto;}
+
 .chartroom{border:#000000 solid 4px;
 			height:650px;
 			width:100%;
@@ -131,7 +131,7 @@ ul{
 			top:190px;
 			left:250px;*/
 			order:2;}
-			
+
 .wu{border:#000000 solid 4px;
 			height:650px;
 			width:100%;
@@ -139,7 +139,7 @@ ul{
 			top:190px;
 			left:250px;*/
 			order:3;}
-			
+
 /*tool*/
 .tool{
 	margin-top:10%;
@@ -154,7 +154,7 @@ ul{
 	width:80px;
 	padding:5px;
 }
-		
+
 .tool_left{
 	float:left;
 	margin-right:2px;
@@ -174,7 +174,7 @@ ul{
 }
 
 /*chart*/
-.chart{	
+.chart{
 	/*position:absolute;*/
 	height:650px;
 	width:100%;
@@ -184,18 +184,18 @@ ul{
 }
 
 .btn-black{
-    background: #323234; /* Old browsers */    
+    background: #323234; /* Old browsers */
 	color:#aaa;
 	border-radius: 0px;
 }
 .btn-black:hover {
-	background: #525254; 
+	background: #525254;
 	color:#fff;
 }
-	
-	
+
+
 .alert-black li{
-	background: #525254; 
+	background: #525254;
 	color:#fff;
 	padding:8px 0px 8px 30px;
 }
@@ -216,25 +216,3 @@ ul{
 	margin-left:20px;
 	margin-top:20px;
 }
-.article h2{
-	
-}
-.article p{
-	
-}
-.article-info{
-
-}
-
-.page-header{
-	
-}
-
-
-
-
-
-
-
-
-	

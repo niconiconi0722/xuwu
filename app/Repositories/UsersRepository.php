@@ -56,21 +56,16 @@ class UsersRepository
         preg_match('/^(data:\s*image\/(\w+);base64,)/', $img, $result);
         $type = $result[2];
         $img_data = str_replace($result[1], '', $img);
-        $path = '/public/upload/icon/'.date("YmdHis.").$type;
+        $path = '/upload/icon/'.date("YmdHis.").$type;
 
-        Image::make($img_data)->resize(100, 100)->save(storage_path().'/app'.$path);
+        Image::make($img_data)->resize(100, 100)->save(storage_path().'/app/public'.$path);
 
         // 删除以前用户上传的图片
         if ($old_icon != $default_icon) {
             \File::delete(public_path().$old_icon);
         }
 
-        // Now $path is a string like "/public/upload/icon/<date>.jpeg".
-        // But $path in database should be a string like "/storage/upload/icon/<date>.jpeg".
-
-        $path = str_replace('public', 'storage', $path);
-
-        $data['iconpath'] = $path;
+        $data['iconpath'] = '/storage' . $path;
         $user->update($data);
     }
 

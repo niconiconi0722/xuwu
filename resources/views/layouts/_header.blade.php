@@ -15,7 +15,7 @@
                     </form>
                 </span></li>
                 <li class="search"><span>
-                    <a><img src="/img/search_black.png"></a>
+                    <a><img src="/img/search.png"></a>
                 </span></li>
             </ul>
         </nav>

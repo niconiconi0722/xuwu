@@ -16,7 +16,6 @@
 	@yield('css')
     </head>
     <body>
-		<!-- main -->
         <div class="main">
 			@yield('content')
         </div>

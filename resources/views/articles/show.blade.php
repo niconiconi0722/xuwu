@@ -24,9 +24,9 @@
 			<a href="{{ route('articles.replies.create', $article->id) }}" class="btn btn-black col-sm-2" >登录并回复</a>
 		@endif
 	</div>
-	
+
 	<h5 class="page-header"></h5>
-	
+
 	<div class="article-reply col-sm-12">
 		@if (count($replies))
 			@foreach ($replies as $reply)
@@ -37,7 +37,7 @@
 		@endif
 	</div>
 
-	
+
 	{{ $replies->links() }}
 
 	@if (Auth::check())
@@ -47,13 +47,5 @@
 	@endif
 
 	@endsection
-	
+
 </div>
-
-
-
-
-
-
-
-
