@@ -16055,6 +16055,10 @@ var chat = new Vue({
     }
 });
 
+$(document).ready(function () {
+    $('.notifications-blink').blink();
+});
+
 /***/ }),
 /* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

@@ -28,6 +28,10 @@ ul{
 
 .transparent-text{color:transparent;}
 
+.wrap{word-break:break-all;}
+
+.text-sm{font-size:0.6em;}
+
 /* head*/
 .head{margin:1%;}
 .head li{float:left;}

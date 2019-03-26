@@ -17,3 +17,7 @@ const chat = new Vue({
         'chat-list': require('./components/ChatListComponent.vue')
     }
 });
+
+$(document).ready(function() {
+    $('.notifications-blink').blink();
+})

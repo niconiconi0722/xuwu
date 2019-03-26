@@ -6,13 +6,14 @@
 
 <div class="tool clearflx">
     <div class="row">
-        <div class="col-sm-6
-            @auth
-                {{ Auth::user()->notification_count > 0 ? 'notifications-toggle' : 'notifications-default' }}
-            @endauth
-        ">
+        <div class="col-sm-6">
             <a href="{{ route('notifications.index') }}">
-                <img src="/img/ring.png">
+                <span class="
+                @auth
+                    {{ Auth::user()->notification_count > 0 ? 'notifications-blink' : 'notifications-default' }}
+                @endauth">
+                    <img src="/img/ring.png">
+                </span>
             </a>
         </div>
         <div class="col-sm-6 tieba">
