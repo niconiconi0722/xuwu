@@ -16056,7 +16056,7 @@ var chat = new Vue({
 });
 
 $(document).ready(function () {
-    $('.notifications-blink').blink();
+    $('.notifications-blink').blink({ delay: 1000 });
 });
 
 /***/ }),

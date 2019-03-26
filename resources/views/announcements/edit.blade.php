@@ -1,24 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('announcements.update', $announcement->id) }}" method="POST">
+    <form action="{{ route('announcements.update', $announcement->id) }}" method="POST" class="col-sm-12 form-horizontal center-vertical">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
 
         <div class="form-group">
-            <label for="title">标题：</label>
-            <input type="text" name="title" id="title" value="{{ $announcement->title }}">
+            <label for="title" class="col-sm-2 control-label text-center">标题：</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" id="title" value="{{ $announcement->title }}">
+            </div>
         </div>
         <div class="form-group">
-            <label for="content">内容：</label>
-            <textarea name="content" id="content">{{ $announcement->content }}</textarea>
+            <label for="content" class="col-sm-2 control-label text-center">内容：</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="content" id="content" rows="10">{{ $announcement->content }}</textarea>
+            </div>
         </div>
         @can('changePriority', $announcement)
             <div class="form-group">
-                <label for="priority">优先级</label>
-                <input type="number" name="priority" value="{{ $announcement->priority }}" id="priority">
+                <label for="priority" class="col-sm-2 control-label text-center">优先级</label>
+                <div class="col-sm-10">
+                    <input type="number" name="priority" value="{{ $announcement->priority }}" id="priority" class="form-control col-xl-4">
+                </div>
             </div>
         @endcan
-        <button>提交</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-black center-btn">发布</button>
+        </div>
     </form>
+@endsection
+
+@section('script')
+    <script>
+        $('textarea').on('keydown', function (event) {
+            if (event.which == 13 && event.ctrlKey) {
+                $('form').submit()
+            }
+        })
+    </script>
 @endsection

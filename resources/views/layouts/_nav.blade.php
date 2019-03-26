@@ -2,6 +2,11 @@
     <a href="{{ route('announcements.index') }}" class="list-group-item text-center"><small>公告</small></a>
     <a href="{{ route('articles.index') }}" class="forum list-group-item text-center"><small>论坛</small></a>
     <a href="{{ route('rooms.index') }}" class="room list-group-item text-center"><small>聊天室</small></a>
+    @auth
+        @if (Auth::user()->isAdmin())
+            <a href="{{ route('menus.admin') }}" class="list-group-item text-center"><small>后台</small></a>
+        @endif
+    @endauth
 </ul>
 
 <div class="tool clearflx">
@@ -23,13 +28,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6 letter">
+        <div class="col-sm-6 letter"><!-- 管理员私信 -->
             <a href="#">
                 <img src="/img/letter.png">
             </a>
         </div>
         <div class="col-sm-6 link">
-            <a href="#">
+            <a href="{{ route('menus.link') }}">
                 <img src="/img/link.png">
             </a>
         </div>

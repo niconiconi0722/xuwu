@@ -18,7 +18,7 @@ class UserPolicy extends Policy
 
     public function destroy(User $currentUser, User $user)
     {
-        return $currentUser->isAdmin() && ($currentUser->id !== $user->id);
+        return $currentUser->isAdmin() || ($currentUser->id === $user->id);
     }
 
     public function authorityEdit(User $currentUser, User $user)

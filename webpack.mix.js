@@ -13,4 +13,12 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .js('resources/assets/js/jquery.blink.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .scripts([
+    'resources/assets/js/particles/particles.js',
+    'resources/assets/js/particles/app.js',
+    ], 'public/js/particles.js')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .styles([
+    'resources/assets/sass/particles/demo.css',
+    'resources/assets/sass/particles/templatemo-style.css',
+    ], 'public/css/particles.css');

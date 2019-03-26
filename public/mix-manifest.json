@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/jquery.blink.js": "/js/jquery.blink.js"
+    "/js/jquery.blink.js": "/js/jquery.blink.js",
+    "/js/particles.js": "/js/particles.js",
+    "/css/particles.css": "/css/particles.css"
 }

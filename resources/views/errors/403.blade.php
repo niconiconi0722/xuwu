@@ -1,3 +1,8 @@
-<!-- 可以和invite继承一个页面 -->
+@extends('layouts.particles')
 
-403 Forbidden该访问被禁止
+@section('content')
+    <div class="text-center col-lg-offset-2 col-lg-8">
+        <p>403 Forbidden</p>
+        <p>您没有权限访问此页面</p>
+    </div>
+@endsection
