@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="article">
+<div class="notifications">
     <div class="container-fluid">
         <ul class="nav order">
             <li><a href="{{ Request::url() }}?cate=all">全部通知</a></li>

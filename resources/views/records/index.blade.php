@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <table>
+    <table class="table table-hover">
         <tr>
             <td>操作内容</td>
             <td>操作用户</td>

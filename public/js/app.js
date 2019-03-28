@@ -53748,6 +53748,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(118)
+}
 var normalizeComponent = __webpack_require__(14)
 /* script */
 var __vue_script__ = __webpack_require__(93)
@@ -53756,7 +53760,7 @@ var __vue_template__ = __webpack_require__(94)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -53797,6 +53801,43 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__event_bus__ = __webpack_require__(33);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -53868,98 +53909,239 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.isHost
     ? _c("div", [
-        _c(
-          "button",
-          { attrs: { type: "button" }, on: { click: _vm.destroyRoom } },
-          [_vm._v("删除房间")]
-        ),
+        _c("div", { staticClass: "dropdown" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "dropdown-content" }, [
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { type: "button" },
+                  on: { click: _vm.destroyRoom }
+                },
+                [_vm._v("删除房间")]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ]),
         _vm._v(" "),
         _c(
-          "form",
-          {
-            attrs: { action: _vm.submitRoute, method: "POST" },
-            on: { submit: _vm.updateRoom }
-          },
+          "div",
+          { staticClass: "modal", attrs: { id: "edit", tabindex: "-1" } },
           [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.room.name,
-                  expression: "room.name"
-                }
-              ],
-              attrs: { type: "text", name: "name" },
-              domProps: { value: _vm.room.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.room, "name", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.room.description,
-                  expression: "room.description"
-                }
-              ],
-              attrs: { type: "text", name: "description" },
-              domProps: { value: _vm.room.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.room, "description", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.room.max_users,
-                  expression: "room.max_users"
-                }
-              ],
-              attrs: {
-                type: "number",
-                name: "max_users",
-                min: _vm.room.user_count,
-                max: "20"
-              },
-              domProps: { value: _vm.room.max_users },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.room, "max_users", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              { attrs: { type: "button" }, on: { click: _vm.updateRoom } },
-              [_vm._v("保存修改")]
-            )
+            _c("div", { staticClass: "modal-dialog" }, [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "form",
+                    {
+                      staticClass: "col-sm-12 form-horizontal center-vertical",
+                      attrs: { action: _vm.submitRoute, method: "POST" },
+                      on: { submit: _vm.updateRoom }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group" }, [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-9" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.room.name,
+                                expression: "room.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", name: "name" },
+                            domProps: { value: _vm.room.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.room, "name", $event.target.value)
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-9" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.room.description,
+                                expression: "room.description"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { name: "description", rows: "5" },
+                            domProps: { value: _vm.room.description },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.room,
+                                  "description",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-9" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.room.max_users,
+                                expression: "room.max_users"
+                              }
+                            ],
+                            staticClass: "col-sm-2",
+                            attrs: {
+                              type: "number",
+                              name: "max_users",
+                              min: _vm.room.user_count,
+                              max: "20"
+                            },
+                            domProps: { value: _vm.room.max_users },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.room,
+                                  "max_users",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-black",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("取消修改")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-black",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: { click: _vm.updateRoom }
+                    },
+                    [_vm._v("保存修改")]
+                  )
+                ])
+              ])
+            ])
           ]
         )
       ])
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("i", {
+        staticClass: "fa fa-cog fa-lg",
+        attrs: { "aria-hidden": "true" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-black",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#edit"
+          }
+        },
+        [_vm._v("修改房间")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-sm-3 control-label text-center",
+        attrs: { for: "name" }
+      },
+      [_c("small", [_vm._v("房间名称")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-sm-3 control-label text-center",
+        attrs: { for: "description" }
+      },
+      [_c("small", [_vm._v("房间描述")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-sm-3 control-label text-center",
+        attrs: { for: "max_users" }
+      },
+      [_c("small", [_vm._v("最大人数")])]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -54055,7 +54237,7 @@ exports = module.exports = __webpack_require__(34)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.chat-speaking {\n    margin-top: 0.6em;\n    padding: 1em;\n    border:1px solid white;\n    border-radius: 1.5em;\n}\n", ""]);
 
 // exports
 
@@ -54108,6 +54290,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -54143,41 +54332,51 @@ var render = function() {
         on: { submit: _vm.addChat }
       },
       [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.content,
-              expression: "content"
-            }
-          ],
-          attrs: { name: "content" },
-          domProps: { value: _vm.content },
-          on: {
-            keyup: function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
+        _c("div", { staticClass: "form-group row" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.content,
+                expression: "content"
               }
-              return _vm.addChat($event)
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass:
+              "form-control col-sm-offset-2 col-sm-8 center-block chat-speaking",
+            attrs: { rows: "3", name: "content" },
+            domProps: { value: _vm.content },
+            on: {
+              keyup: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.addChat($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.content = $event.target.value
               }
-              _vm.content = $event.target.value
             }
-          }
-        }),
+          })
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          { attrs: { type: "button" }, on: { click: _vm.addChat } },
-          [_vm._v("发送")]
-        )
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-black center-btn btn-xs",
+              attrs: { type: "button" },
+              on: { click: _vm.addChat }
+            },
+            [_vm._v("发送")]
+          )
+        ])
       ]
     )
   ])
@@ -54278,7 +54477,7 @@ exports = module.exports = __webpack_require__(34)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.userchat {\n    /* background: linear-gradient(to bottom, black 0, white 50%); */\n    background-color: #ddd;\n    border: white solid 1px;\n    border-radius: 5px;\n    font-size: large;\n}\n.systemchat {\n    display: block;\n    padding-left: 3em;\n    font-size: small;\n    font-color: #aaaaaa;\n}\n", ""]);
 
 // exports
 
@@ -54290,6 +54489,37 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__event_bus__ = __webpack_require__(33);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54319,7 +54549,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             chats: this.initialChats,
-            users: []
+            users: [],
+            visitingUser: false
         };
     },
 
@@ -54360,6 +54591,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         kickUser: function kickUser(user) {
             axios.delete('/chatroom/' + this.roomId + '/kick/' + user.id);
+        },
+        toggleUser: function toggleUser() {
+            this.visitingUser = !this.visitingUser;
         }
     }
 });
@@ -54375,34 +54609,105 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("button", { on: { click: _vm.leave } }, [_vm._v("退出房间")]),
+      _c(
+        "button",
+        { staticClass: "btn btn-danger", on: { click: _vm.leave } },
+        [_vm._v("退出房间")]
+      ),
       _vm._v(" "),
-      _c("p", [_vm._v("房间内的用户：")]),
+      _c("div", { on: { click: _vm.toggleUser } }, [
+        _vm.visitingUser
+          ? _c("div", [
+              _c("i", {
+                staticClass: "fa fa-caret-up",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+          : _c("div", [
+              _c("i", {
+                staticClass: "fa fa-caret-down",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+      ]),
       _vm._v(" "),
-      _vm._l(_vm.users, function(user) {
-        return _c("div", [
-          _c("p", [_vm._v(_vm._s(user.ni_cheng))]),
-          _vm._v(" "),
-          user.id != _vm.currentUser.id
-            ? _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.kickUser(user)
-                    }
-                  }
-                },
-                [_vm._v("踢出房间")]
-              )
-            : _vm._e()
-        ])
-      }),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.visitingUser,
+              expression: "visitingUser"
+            }
+          ],
+          attrs: { id: "user-list" }
+        },
+        [
+          _c("div", [
+            _c("p", [_vm._v("房间内的用户：")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.users, function(user) {
+                return _c("div", { staticClass: "col-sm-6" }, [
+                  _c("p", { staticClass: "col-sm-3" }, [
+                    _vm._v(_vm._s(user.ni_cheng))
+                  ]),
+                  _vm._v(" "),
+                  user.id != _vm.currentUser.id
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "col-sm-3 btn btn-black pull-right",
+                          on: {
+                            click: function($event) {
+                              _vm.kickUser(user)
+                            }
+                          }
+                        },
+                        [_vm._v("踢出房间")]
+                      )
+                    : _vm._e()
+                ])
+              })
+            )
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
       _vm._l(_vm.chats, function(chat) {
-        return _c("div", [_c("p", [_vm._v(_vm._s(chat.content))])])
+        return _c("div", [
+          _c("div", { staticClass: "row" }, [
+            chat.user_id != null
+              ? _c("div", { staticClass: "col-sm-2 text-center" }, [
+                  _c("img", { attrs: { src: chat.user.iconpath } }),
+                  _vm._v(" "),
+                  _c("span", [
+                    _c("small", [_vm._v(_vm._s(chat.user.ni_cheng))])
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-10" }, [
+              chat.user_id != null
+                ? _c("div", [
+                    _c("p", { staticClass: "userchat wrap" }, [
+                      _vm._v(_vm._s(chat.content))
+                    ])
+                  ])
+                : _c("div", [
+                    _c("p", { staticClass: "systemchat wrap" }, [
+                      _vm._v(_vm._s(chat.content))
+                    ])
+                  ])
+            ])
+          ])
+        ])
       })
     ],
     2
@@ -54423,6 +54728,57 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(119);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(35)("8584a9f8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5ed8daa7\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RoomOption.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5ed8daa7\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RoomOption.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(34)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n.dropdown-content {\n    display: none;\n    position: absolute;\n    top: 2em;\n    background-color: rgba(255,255,255,0.8);\n    z-index: 1;\n}\n.dropdown:hover .dropdown-content {\n    display: block;\n}\n.dropdown-item {\n    margin: 2em;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

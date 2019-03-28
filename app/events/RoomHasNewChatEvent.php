@@ -38,4 +38,20 @@ class RoomHasNewChatEvent implements ShouldBroadcastNow
     {
         return new PresenceChannel("chatroom.{$this->chat->room_id}.channel");
     }
+
+    public function broadcastWith()
+    {
+        $data = $this->chat->toArray();
+
+        if ($this->chat->user_id) {
+            $userOfChat = [
+                'user' => $this->chat->user,
+            ];
+            $data = array_merge($userOfChat, $data);
+        }
+
+        $return['chat'] = $data;
+
+        return $return;
+    }
 }

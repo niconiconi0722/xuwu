@@ -23,7 +23,6 @@ class IndexController extends Controller
 
     public function auth(Request $request)
     {
-		//return view($request->password);
         if ($request->password === config('app.password')) {
             $this->repository->enter();
 

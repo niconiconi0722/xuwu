@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Repositories\EntryRepository;
+use App\Repositories\LoginAttemptCountRepository;
 use App\Http\Requests\LoginRequest;
 
 use App\Models\User;
@@ -33,19 +34,23 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $repository;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(LoginAttemptCountRepository $repository)
     {
         $this->middleware('guest')->except('logout');
+        $this->repository = $repository;
     }
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        $should_captcha = $this->repository->shouldCaptcha();
+        return view('auth.login', compact('should_captcha'));
     }
 
     public function login(LoginRequest $request)
@@ -53,10 +58,12 @@ class LoginController extends Controller
         $login['username'] = $request->username;
         $login['password'] = $request->password;
 
-        if(Auth::attempt($login)){
+        if (Auth::attempt($login)) {
+            $this->repository->resetCount();
             return redirect()->intended();
-        }else{
-            session()->flash('danger', '账号不存在或密码错误');
+        } else {
+            $this->repository->addCount();
+            $request->session()->flash('danger', '账号不存在或密码错误');
             return redirect()->back()->withInput();
         }
     }

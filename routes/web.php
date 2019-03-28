@@ -42,9 +42,9 @@ Route::post('chatroom/{room}/chat/create', 'ChatsController@store')->name('chats
 Route::get('invite', 'InviteController@show')->name('invite.show');
 Route::redirect('invite.html', 'invite', 301)->name('invite.alias');
 
-Route::view('menus/admin', 'menus/admin')->name('menus.admin');
+Route::view('menus/admin', 'menus/admin')->name('menus.admin')->middleware('admin');
 Route::view('menus/link', 'menus/link')->name('menus.link');
 
 Route::resource('notifications', 'NotificationsController', ['only' => ['index', 'show']]);
 
-Route::get('records', 'RecordsController@index')->name('record');
+Route::get('records', 'RecordsController@index')->name('record')->middleware('admin');

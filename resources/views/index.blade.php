@@ -20,7 +20,7 @@
 
                     <form action="{{ route('index.auth') }}" method="POST" class="form-horizontal center-vertical">
                         {{ csrf_field() }}
-                        <input class="form-control short-width" type="password" name="password">
+                        <input class="form-control short-width" type="password" name="password" autofocus>
                     </form>
                 </div>
             </div>

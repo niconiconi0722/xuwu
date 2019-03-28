@@ -25,7 +25,7 @@ class ChatroomsRepository
 
     public function getChatsInRoom($room)
     {
-        return $room->chats()->orderBy('created_at', 'desc')->limit(50)->get();
+        return $room->chats()->with('user')->orderBy('created_at', 'desc')->limit(50)->get();
     }
 
     public function roomShouldHasUsers($users, $room)
@@ -91,7 +91,7 @@ class ChatroomsRepository
         $chat = new Chat();
 
         if (! $isSystemMessage) {
-            $chat->user_id = Auth::id();
+            $chat->user_id = Auth::user()->id;
         }
         $chat->room_id = $room->id;
         $chat->content = $request->content;

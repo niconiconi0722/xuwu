@@ -2,12 +2,16 @@
 
 @section('content')
     <div id="rooms-list">
-        <ul>
-            @each('rooms._room_list', $rooms, 'room')
-        </ul>
+        <div class="content-scroll">
+            <table class="table table-hover">
+                @each('rooms._room_list', $rooms, 'room')
+            </table>
+        </div>
     </div>
 
-    <a href="{{ route('rooms.create') }}">新建房间</a>
+    @if (Auth::check())
+        <a href="{{ route('rooms.create') }}" class="pull-right"><i class="fa fa-plus fa-3x" aria-hidden="true"></i></a>
+    @endif
 @endsection
 
 @section('script')

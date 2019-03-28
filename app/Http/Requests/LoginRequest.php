@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Repositories\LoginAttemptCountRepository;
 
 class LoginRequest extends FormRequest
 {
@@ -23,10 +24,17 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
+        if ((new LoginAttemptCountRepository())->shouldCaptcha()) {
+            return [
+                'username' => 'required|string|max:60',
+                'password' => 'required|string|between:8,60',
+                'captcha' => 'required|string|captcha',
+            ];
+        }
+
         return [
             'username' => 'required|string|max:60',
-            'password' => 'required|string|between:8,20',
-            'captcha' => 'required|string|captcha',
+            'password' => 'required|string|between:8,60',
         ];
     }
 

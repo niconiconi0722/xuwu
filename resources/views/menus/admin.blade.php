@@ -6,9 +6,9 @@
             <tr>
                 <td><a href="{{ route('users.index') }}">用户管理</a></td>
             </tr>
-            <!-- <tr>
-                <td></td>
-            </tr> -->
+            <tr>
+                <td><a href="{{ route('record') }}">回复删除记录</a></td>
+            </tr>
         </table>
     </div>
 @endsection

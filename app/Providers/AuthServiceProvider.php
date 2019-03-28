@@ -18,7 +18,6 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Announcement' => 'App\Policies\AnnouncementPolicy',
         'App\Models\Article' => 'App\Policies\ArticlePolicy',
         'App\Models\Reply' => 'App\Policies\ReplyPolicy',
-        'App\Models\Record' => 'App\Policies\RecordPolicy',
         'App\Models\Room' => 'App\Policies\RoomPolicy',
     ];
 
