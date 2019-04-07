@@ -14,7 +14,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use App\Models\Room;
 use App\Models\User;
 
-class HostChangedEvent implements ShouldBroadcastNow
+class HostChangedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

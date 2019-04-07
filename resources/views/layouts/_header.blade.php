@@ -4,7 +4,7 @@
             <ul>
                 <li class="peason"><span>
                     <a href="{{ route('users.edit', Auth::user()->id) }}">
-                        <img src="{{ Auth::user()->iconpath }}" alt="{{ Auth::user()->id }}">
+                        <img src="{{ Auth::user()->iconpath }}" alt="{{ Auth::user()->id }}" class="user-icon">
                     </a>
                 </span></li>
                 <li class="out"><span>

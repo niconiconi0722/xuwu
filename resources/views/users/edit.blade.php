@@ -5,6 +5,8 @@
 @stop
 
 @section('css')
+    {{-- 这下面的三个bootstrap和jquery因为版本不同不能去掉 --}}
+    <link href="/head/bootstrap.min.css" rel="stylesheet">
     <link href="/head/cropper.min.css" rel="stylesheet">
     <link href="/head/sitelogo.css" rel="stylesheet">
 @stop
@@ -16,8 +18,8 @@
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <div class="col-sm-12">
-                <div id="icon">
-                    <img alt="icon" src="{{ $user->iconpath }}">
+                <div>
+                    <img alt="icon" src="{{ $user->iconpath }}" class="user-icon">
                 </div>
                 <button type="button" class="btn btn-primary pull-left"  data-toggle="modal" data-target="#avatar-modal" style="margin: 10px;">修改头像</button>
             </div>
@@ -86,6 +88,8 @@
 @stop
 
 @section('script')
+    <script src="/head/jquery.min.js"></script>
+    <script src="/head/bootstrap.min.js"></script>
     <script src="/head/cropper.js"></script>
     <script src="/head/sitelogo.js"></script>
 @stop

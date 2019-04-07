@@ -14,7 +14,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use App\Models\Room;
 use App\Models\User;
 
-class UserBeKickedEvent implements ShouldBroadcastNow
+class UserBeKickedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

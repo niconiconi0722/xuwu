@@ -3,7 +3,7 @@
 namespace App\Events;
 
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Bradcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class AtUserEvent
 {

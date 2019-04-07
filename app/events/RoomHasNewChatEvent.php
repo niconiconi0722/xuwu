@@ -13,7 +13,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
 use App\Models\Chat;
 
-class RoomHasNewChatEvent implements ShouldBroadcastNow
+class RoomHasNewChatEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
