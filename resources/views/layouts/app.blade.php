@@ -22,9 +22,12 @@
             </div>
 
             <div class="row">
-				<div class="col-sm-2">
+				<div class="col-sm-2 hidden-xs">
                     @include('layouts._nav')
 				</div>
+                <div class="col-xs-12 visible-xs">
+                    @include('layouts._nav_xs')
+                </div>
                 <div class="col-sm-8">
 					<nav class="content">
 						<nav class="main_forum">
@@ -33,18 +36,9 @@
 							@yield('content')
 							<ul></ul>
 						</nav>
-						<nav class="chartroom">
-							<ul></ul>
-						</nav>
-						<nav class="wu">
-							<ul></ul>
-						</nav>
-						<nav class="wu">
-							<ul></ul>
-						</nav>
 					</nav>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-2 hidden-xs">
 					<!--chart-->
 					<nav class="chart">
 

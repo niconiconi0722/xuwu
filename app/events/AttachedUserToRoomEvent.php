@@ -14,7 +14,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use App\Models\Room;
 use App\Models\User;
 
-class AttachedUserToRoomEvent implements ShouldBroadcastNow
+class AttachedUserToRoomEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
