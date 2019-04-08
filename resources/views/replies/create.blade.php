@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="{{ route('articles.show', $article->id) }}">返回</a>
+
     <form method="POST" action="{{ route('articles.replies.store', $article->id) }}" class="col-sm-12 form-horizontal center-vertical">
     	{{ csrf_field() }}
     	<div class="form-group">

@@ -35,8 +35,9 @@
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-			    <button type="submit" class="btn btn-black col-sm-4">登录</button>
-                <a class="col-sm-offset-2 col-sm-6" href="{{ route('password.request') }}">忘记密码（仅限绑定过邮箱的用户）(暂时无法使用）</a>
+			    <button type="submit" class="btn btn-black col-sm-2">登录</button>
+                <a class="col-sm-6" href="{{ route('password.request') }}">忘记密码（仅限绑定过邮箱的用户）(暂时无法使用）</a>
+                <a class="col-sm-4" href="{{ route('users.create') }}">注册新账号</a>
 			</div>
 		</div>
     </form>

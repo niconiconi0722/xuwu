@@ -1,6 +1,6 @@
 <div id="reply_{{ $reply->id }}" class="row">
     <div class="col-sm-3">
-        <img class="img-responsive center-block" src="{{ $reply->user->iconpath }}" alt="{{ $reply->user->username }}">
+        <img class="img-responsive center-block user-icon-xs" src="{{ $reply->user->iconpath }}" alt="{{ $reply->user->username }}">
         <p class="text-center">{{ $reply->user->ni_cheng }}</p>
     </div>
     <div class="col-md-8">

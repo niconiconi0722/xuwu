@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="{{ route('rooms.index') }}">返回</a>
+
     <form action="{{ route('rooms.store') }}" method="POST" class="col-sm-12 form-horizontal center-vertical">
         {{ csrf_field() }}
 

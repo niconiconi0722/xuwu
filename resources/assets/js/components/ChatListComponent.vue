@@ -28,7 +28,7 @@
         <div v-for="chat in chats">
             <div class="row">
                 <div class="col-sm-2 text-center" v-if="chat.user_id != null">
-                    <img :src="chat.user.iconpath">
+                    <img class="user-icon-xs" :src="chat.user.iconpath">
                     <span><small>{{ chat.user.ni_cheng }}</small></span>
                 </div>
                 <div class="col-sm-10">

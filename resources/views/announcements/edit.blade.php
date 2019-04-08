@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="{{ route('announcements.show', $announcement->id) }}">返回</a>
+
     <form action="{{ route('announcements.update', $announcement->id) }}" method="POST" class="col-sm-12 form-horizontal center-vertical">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}

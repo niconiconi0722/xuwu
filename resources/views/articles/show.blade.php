@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="{{ route('articles.index') }}">返回</a>
+
     <div class="article">
         <div class="row">
             <div class="content-scroll col-md-11">
         	    <h2>{{ $article->title }}</h2>
                 <div class="row">
                 	<div class="col-sm-3">
-                        <img class="img-responsive center-block" src="{{ $article->user->iconpath }}" alt="{{ $article->user->username }}">
+                        <img class="img-responsive center-block user-icon-xs" src="{{ $article->user->iconpath }}" alt="{{ $article->user->username }}">
                 		<p class="text-center">{{ $article->user->ni_cheng }}</p>
                 	</div>
                 	<div class="col-sm-8 wrap">

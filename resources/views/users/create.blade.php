@@ -64,9 +64,12 @@
 		</div>
 
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-sm-offset-2 col-sm-6">
 			  <button type="submit" class="btn btn-black col-sm-4">注册</button>
 			</div>
+            <div class="col-sm-4">
+              <a href="{{ route('login') }}">已有账号</a>
+            </div>
 		</div>
 	</form>
 
