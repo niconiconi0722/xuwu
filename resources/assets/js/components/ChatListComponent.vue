@@ -28,11 +28,11 @@
 
         <div v-for="chat in chats">
             <div class="row">
-                <div class="col-sm-2 text-center" v-if="chat.user_id != null">
+                <div class="col-sm-2 text-center user-data" v-if="chat.user_id != null">
                     <img class="user-icon-xs" :src="chat.user.iconpath">
                     <span><small>{{ chat.user.ni_cheng }}</small></span>
                 </div>
-                <div class="col-sm-10">
+                <div class="col-sm-10 narrow-xs">
                     <div v-if="chat.user_id != null">
                         <p class="userchat wrap">{{ chat.content }}</p>
                     </div>
@@ -139,6 +139,15 @@
         .user-list-item {
             display: inline-block;
             width: 30%;
+        }
+
+        .user-data {
+            width: 20%;
+        }
+
+        .narrow-xs {
+            display: inline-block;
+            width: 75%;
         }
     }
 </style>

@@ -54517,7 +54517,7 @@ exports = module.exports = __webpack_require__(14)(false);
 
 
 // module
-exports.push([module.i, "\n.userchat {\n    /* background: linear-gradient(to bottom, black 0, white 50%); */\n    background-color: #ddd;\n    border: white solid 1px;\n    border-radius: 5px;\n    font-size: large;\n}\n.systemchat {\n    display: block;\n    padding-left: 3em;\n    font-size: small;\n    font-color: #aaaaaa;\n}\n@media (max-width: 768px) {\n.user-list-row {\n        display: block;\n}\n.user-list-item {\n        display: inline-block;\n        width: 30%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.userchat {\n    /* background: linear-gradient(to bottom, black 0, white 50%); */\n    background-color: #ddd;\n    border: white solid 1px;\n    border-radius: 5px;\n    font-size: large;\n}\n.systemchat {\n    display: block;\n    padding-left: 3em;\n    font-size: small;\n    font-color: #aaaaaa;\n}\n@media (max-width: 768px) {\n.user-list-row {\n        display: block;\n}\n.user-list-item {\n        display: inline-block;\n        width: 30%;\n}\n.user-data {\n        width: 20%;\n}\n.narrow-xs {\n        display: inline-block;\n        width: 75%;\n}\n}\n", ""]);
 
 // exports
 
@@ -54742,7 +54742,7 @@ var render = function() {
         return _c("div", [
           _c("div", { staticClass: "row" }, [
             chat.user_id != null
-              ? _c("div", { staticClass: "col-sm-2 text-center" }, [
+              ? _c("div", { staticClass: "col-sm-2 text-center user-data" }, [
                   _c("img", {
                     staticClass: "user-icon-xs",
                     attrs: { src: chat.user.iconpath }
@@ -54754,7 +54754,7 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _c("div", { staticClass: "col-sm-10" }, [
+            _c("div", { staticClass: "col-sm-10 narrow-xs" }, [
               chat.user_id != null
                 ? _c("div", [
                     _c("p", { staticClass: "userchat wrap" }, [
