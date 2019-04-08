@@ -15,9 +15,10 @@
             <div>
                 <p>房间内的用户：</p>
                 <div class="row">
-                    <div v-for="user in users" class="col-sm-6">
-                        <p class="col-sm-3">{{ user.ni_cheng }}</p>
-                        <button @click="kickUser(user)" v-if="user.id != currentUser.id" class="col-sm-3 btn btn-black pull-right">踢出房间</button>
+                    <div v-for="user in users" class="col-sm-6 user-list-row">
+                        <p class="col-sm-3 user-list-item">{{ user.ni_cheng }}</p>
+                        <p class="col-sm-2 user-list-item" v-if="user.id == room.host"><i class="fa fa-star" aria-hidden="true"></i></p>
+                        <p @click="kickUser(user)" v-if="canKick(user)" class="col-sm-2 user-list-item pull-right"><i class="fa fa-ban" aria-hidden="true"></i></p>
                     </div>
                 </div>
             </div>
@@ -52,7 +53,7 @@
     export default {
         props: {
             initialChats: Array,
-            roomId: Number,
+            room: Object,
             currentUser: Object,
         },
         data(){
@@ -63,9 +64,9 @@
             }
         },
         mounted: function(){
-            window.Echo.join('chatroom.' + this.roomId + '.channel')
+            window.Echo.join('chatroom.' + this.room.id + '.channel')
             .here((users) => {
-                axios.post('/chatroom/' + this.roomId + '/syncuser', users);
+                axios.post('/chatroom/' + this.room.id + '/syncuser', users);
                 this.users = Object.values(users);
             })
             .listen('RoomHasNewChatEvent', (e) => {
@@ -90,7 +91,7 @@
         },
         methods: {
             leave(){
-                axios.post('/chatroom/' + this.roomId + '/leave');
+                axios.post('/chatroom/' + this.room.id + '/leave');
                 window.location.href = "/chatroom/lounge";
             },
             removeUser(shouldRemoveUser){
@@ -101,8 +102,11 @@
                     }
                 }
             },
+            canKick(user) {
+                return ((this.currentUser.id == this.room.host) || (this.currentUser.id >= 1)) && (user.id != this.currentUser.id);
+            },
             kickUser(user){
-                axios.delete('/chatroom/' + this.roomId + '/kick/' + user.id);
+                axios.delete('/chatroom/' + this.room.id + '/kick/' + user.id);
             },
             toggleUser() {
                 this.visitingUser = !this.visitingUser;
@@ -125,5 +129,16 @@
         padding-left: 3em;
         font-size: small;
         font-color: #aaaaaa;
+    }
+
+    @media (max-width: 768px) {
+        .user-list-row {
+            display: block;
+        }
+
+        .user-list-item {
+            display: inline-block;
+            width: 30%;
+        }
     }
 </style>
