@@ -53,12 +53,12 @@
     import { Hub } from '../event-bus';
 
     export default {
-        props:{
+        props: {
             currentUser: Object,
             submitRoute: String,
             initialRoom: Object
         },
-        data(){
+        data () {
             return {
                 room: this.initialRoom
             }
@@ -73,7 +73,7 @@
                 this.room.host = user.id;
             });
         },
-        methods:{
+        methods: {
             updateRoom(){
                 axios.patch(this.submitRoute + '/edit', this.room).then((res) => {
                     if (res.data.success == true) {

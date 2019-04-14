@@ -86,7 +86,7 @@ class ChatroomsRepository
         $this->detachUserFromRoom($user, $room);
     }
 
-    public function newChat($request, $room, bool $isSystemMessage = false)
+    public function newChat($request, $room, bool $isSystemMessage = false, bool $isToOther = false)
     {
         $chat = new Chat();
 

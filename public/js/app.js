@@ -54335,8 +54335,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -54517,7 +54515,7 @@ exports = module.exports = __webpack_require__(14)(false);
 
 
 // module
-exports.push([module.i, "\n.userchat {\n    /* background: linear-gradient(to bottom, black 0, white 50%); */\n    background-color: #ddd;\n    border: white solid 1px;\n    border-radius: 5px;\n    font-size: large;\n}\n.systemchat {\n    display: block;\n    padding-left: 3em;\n    font-size: small;\n    font-color: #aaaaaa;\n}\n@media (max-width: 768px) {\n.user-list-row {\n        display: block;\n}\n.user-list-item {\n        display: inline-block;\n        width: 30%;\n}\n.user-data {\n        width: 20%;\n}\n.narrow-xs {\n        display: inline-block;\n        width: 75%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.user-chat {\n    /* background: linear-gradient(to bottom, black 0, white 50%); */\n    background-color: #ddd;\n    border: white solid 1px;\n    border-radius: 5px;\n    font-size: large;\n}\n.system-chat {\n    display: block;\n    padding-left: 3em;\n    font-size: small;\n    font-color: #aaaaaa;\n}\n@media (max-width: 768px) {\n.user-list-row {\n        display: block;\n}\n.user-list-item {\n        display: inline-block;\n        width: 30%;\n}\n.user-data {\n        width: 20%;\n}\n.narrow-xs {\n        display: inline-block;\n        width: 75%;\n}\n}\n", ""]);
 
 // exports
 
@@ -54529,6 +54527,10 @@ exports.push([module.i, "\n.userchat {\n    /* background: linear-gradient(to bo
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__event_bus__ = __webpack_require__(35);
+//
+//
+//
+//
 //
 //
 //
@@ -54595,6 +54597,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    computed: {
+        newChatAudio: function newChatAudio() {
+            return document.getElementById('new-chat-audio');
+        }
+    },
     mounted: function mounted() {
         var _this = this;
 
@@ -54603,6 +54610,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.users = Object.values(users);
         }).listen('RoomHasNewChatEvent', function (e) {
             _this.chats.unshift(e.chat);
+            _this.newChatAudio.play();
         }).listen('AttachedUserToRoomEvent', function (e) {
             _this.users.push(e.user);
         }).listen('DetachedUserFromRoomEvent', function (e) {
@@ -54616,6 +54624,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).listen('HostChangedEvent', function (e) {
             __WEBPACK_IMPORTED_MODULE_0__event_bus__["a" /* Hub */].$emit('newHost', e.user);
         });
+        // document.addEventListener('visibilitychange', function() {
+        //     this.shouldAudio = (document.visibilityState == 'hidden');
+        // })
     },
     methods: {
         leave: function leave() {
@@ -54757,24 +54768,38 @@ var render = function() {
             _c("div", { staticClass: "col-sm-10 narrow-xs" }, [
               chat.user_id != null
                 ? _c("div", [
-                    _c("p", { staticClass: "userchat wrap" }, [
+                    _c("p", { staticClass: "user-chat wrap" }, [
                       _vm._v(_vm._s(chat.content))
                     ])
                   ])
                 : _c("div", [
-                    _c("p", { staticClass: "systemchat wrap" }, [
+                    _c("p", { staticClass: "system-chat wrap" }, [
                       _vm._v(_vm._s(chat.content))
                     ])
                   ])
             ])
           ])
         ])
-      })
+      }),
+      _vm._v(" "),
+      _vm._m(0)
     ],
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("audio", {
+        staticClass: "system-audio hidden",
+        attrs: { id: "new-chat-audio", src: "/storage/music/new_chat.mp3" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -34,13 +34,17 @@
                 </div>
                 <div class="col-sm-10 narrow-xs">
                     <div v-if="chat.user_id != null">
-                        <p class="userchat wrap">{{ chat.content }}</p>
+                        <p class="user-chat wrap">{{ chat.content }}</p>
                     </div>
                     <div v-else>
-                        <p class="systemchat wrap">{{ chat.content }}</p>
+                        <p class="system-chat wrap">{{ chat.content }}</p>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div>
+            <audio class="system-audio hidden" id="new-chat-audio" src="/storage/music/new_chat.mp3"></audio>
         </div>
     </div>
 </template>
@@ -63,6 +67,11 @@
                 visitingUser: false
             }
         },
+        computed: {
+            newChatAudio: function () {
+                return document.getElementById('new-chat-audio');
+            }
+        },
         mounted: function(){
             window.Echo.join('chatroom.' + this.room.id + '.channel')
             .here((users) => {
@@ -71,6 +80,7 @@
             })
             .listen('RoomHasNewChatEvent', (e) => {
                 this.chats.unshift(e.chat);
+                this.newChatAudio.play();
             })
             .listen('AttachedUserToRoomEvent', (e) => {
                 this.users.push(e.user);
@@ -88,6 +98,9 @@
             .listen('HostChangedEvent', (e) => {
                 Hub.$emit('newHost', e.user);
             });
+            // document.addEventListener('visibilitychange', function() {
+            //     this.shouldAudio = (document.visibilityState == 'hidden');
+            // })
         },
         methods: {
             leave(){
@@ -116,7 +129,7 @@
 </script>
 
 <style>
-    .userchat {
+    .user-chat {
         /* background: linear-gradient(to bottom, black 0, white 50%); */
         background-color: #ddd;
         border: white solid 1px;
@@ -124,7 +137,7 @@
         font-size: large;
     }
 
-    .systemchat {
+    .system-chat {
         display: block;
         padding-left: 3em;
         font-size: small;

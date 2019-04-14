@@ -13,7 +13,8 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
 use App\Models\Chat;
 
-class RoomHasNewChatEvent implements ShouldBroadcast
+// 如果implements ShouldBroadcast在用户进入房间时用户会显示两次用户进入房间
+class RoomHasNewChatEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
